@@ -4,12 +4,12 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Predicting tactile, hand configuration, and hand–object segmentation from egocentric RGB video with a pretrained video diffusion model.">
 <meta name="theme-color" content="#ffffff"><title>Video Generators Can Predict Touch</title>
-<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=13">
-<script defer src="data.js?v=11"></script><script defer src="app.js?v=13"></script>
+<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=13"><link rel="stylesheet" href="rebuttal.css?v=4">
+<script defer src="data.js?v=11"></script><script defer src="app.js?v=13"></script><script defer src="rebuttal.js?v=4"></script>
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
-<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a><a href="#overunder">Error analysis</a><a href="#ood">OOD</a></div><a class="nav-end" href="#gallery">Explore videos <span aria-hidden="true">↗</span></a></nav></header>
+<header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="wordmark" href="#"><span class="brand-dot"></span> Video <span class="brand-touch">/ Touch</span></a><div class="navlinks"><a href="#gallery">Results</a><a href="#method">Method</a><a href="#joint">Joint prediction</a><a href="#bimanual">Bimanual</a><a href="#overunder">Error analysis</a><a href="#ood">OOD</a><a href="#rebuttal">Rebuttal</a></div><a class="nav-end" href="#rebuttal">Rebuttal videos <span aria-hidden="true">↗</span></a></nav></header>
 <main>
 <section class="hero wrap" id="overview">
 <h1><span>Video Generators</span><br>Can Predict <em>Touch</em></h1>
@@ -73,6 +73,17 @@
     <article class="joint-slot"><div class="joint-slot-frame"><video src="assets/ood/opentouch-episode.mp4" poster="assets/ood/opentouch-episode.jpg" aria-label="OpenTouch out-of-distribution prediction" autoplay muted loop playsinline preload="metadata"></video><div class="row-labels" aria-label="Video row labels"><span>Generated</span><span>GT</span></div></div></article>
   </div>
 </section>
+<section class="rebuttal-section" id="rebuttal"><div class="wrap section">
+  <div class="section-heading"><div><h2>Rebuttal: additional video comparisons</h2></div><p>Frame-aligned qualitative results on held-out recordings.</p></div>
+  <div class="rebuttal-block" id="baseline-comparison">
+    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">01 / Tactile prediction</span><h3>Comparison with HOPE and EgoTAC</h3><p>Three recordings comparing RGB input, ground truth, our tactile prediction, HOPE, and EgoTAC. All tactile predictions use the same hand renderer.</p></div></div>
+    <div class="rebuttal-recordings" id="baseline-videos"></div>
+  </div>
+  <div class="rebuttal-block" id="segmentation-comparison">
+    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">02 / Joint prediction</span><h3>Generated vs. ground-truth segmentation</h3><p>Four individual recordings showing RGB input, ground-truth segmentation, and generated segmentation side by side.</p></div></div>
+    <div class="rebuttal-recordings" id="segmentation-videos"></div>
+  </div>
+</div></section>
 </main><footer class="wrap"><a class="wordmark" href="#">Video <span class="brand-touch">/ Touch</span></a><p>Video Generators Can Predict Touch</p><a href="#">Back to top ↑</a></footer>
 <noscript><p class="wrap">Enable JavaScript to explore the OpenTouch comparison gallery. The figures remain available.</p></noscript>
 </body></html>
