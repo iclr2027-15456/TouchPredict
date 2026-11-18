@@ -4,8 +4,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Predicting tactile, hand configuration, and hand–object segmentation from egocentric RGB video with a pretrained video diffusion model.">
 <meta name="theme-color" content="#ffffff"><title>Video Generators Can Predict Touch</title>
-<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=13"><link rel="stylesheet" href="rebuttal.css?v=5">
-<script defer src="data.js?v=11"></script><script defer src="app.js?v=13"></script><script defer src="rebuttal.js?v=4"></script>
+<link rel="icon" href="assets/images/tactile.png"><link rel="stylesheet" href="styles.css?v=13"><link rel="stylesheet" href="rebuttal.css?v=8">
+<script defer src="data.js?v=11"></script><script defer src="app.js?v=13"></script><script defer src="rebuttal.js?v=9"></script>
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -79,12 +79,16 @@
     <div class="rebuttal-heading"><div><span class="rebuttal-kicker">01 / Tactile prediction</span><h3>Comparison with HOPE and EgoTAC</h3><p>Three recordings comparing RGB input, ground truth, our tactile prediction, HOPE, and EgoTAC. All tactile predictions use the same hand renderer.</p></div></div>
     <div class="rebuttal-recordings" id="baseline-videos"></div>
   </div>
+  <div class="rebuttal-block" id="regression-comparison">
+    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">02 / Ablation</span><h3>Regression model output</h3><p>Different input videos yield nearly the same tactile pattern from a Wan-feature regressor, motivating iterative denoising for interaction-specific predictions.</p></div></div>
+    <div class="regression-scroll"><div id="regression-videos" class="regression-rows"></div></div>
+  </div>
   <div class="rebuttal-block" id="segmentation-comparison">
-    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">02 / Joint prediction</span><h3>Generated vs. ground-truth segmentation</h3><p>Four individual recordings showing RGB input, ground-truth segmentation, and generated segmentation side by side.</p></div></div>
+    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">03 / Joint prediction</span><h3>Generated vs. ground-truth segmentation</h3><p>Four individual recordings showing RGB input, ground-truth segmentation, and generated segmentation side by side.</p></div></div>
     <div class="rebuttal-recordings" id="segmentation-videos"></div>
   </div>
   <div class="rebuttal-block" id="egopressurediff-comparison">
-    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">03 / Additional fine-tuning</span><h3>Fine-tuning on EgoPressureDiff</h3><p>Two examples comparing the input video, ground truth, EgoPressureDiff's posted result, and our fine-tuned prediction. (Note: these videos are from the official EgoPressureDiff Website and no checkpoint exists to generate additional samples for comparison)</p></div></div>
+    <div class="rebuttal-heading"><div><span class="rebuttal-kicker">04 / Additional fine-tuning</span><h3>Fine-tuning on EgoPressureDiff</h3><p>Two examples comparing the input video, ground truth, EgoPressureDiff's posted result, and our fine-tuned prediction. (Note: these videos are from the official EgoPressureDiff Website and no checkpoint exists to generate additional samples for comparison)</p></div></div>
     <div class="rebuttal-recordings">
       <article class="rebuttal-recording"><h4>Apple · p006</h4><div class="epd-scroller"><div class="epd-media"><div class="epd-labels" aria-hidden="true"><span>RGB input</span><span>Ground truth</span><span>EgoPressureDiff</span><span>Ours</span></div><video src="assets/rebuttal/egopressurediff/apple.mp4" aria-label="Apple comparison: RGB input, ground truth, EgoPressureDiff, and our fine-tuned prediction" controls muted loop playsinline preload="metadata"></video></div></div></article>
       <article class="rebuttal-recording"><h4>Corn · p008</h4><div class="epd-scroller"><div class="epd-media"><div class="epd-labels" aria-hidden="true"><span>RGB input</span><span>Ground truth</span><span>EgoPressureDiff</span><span>Ours</span></div><video src="assets/rebuttal/egopressurediff/corn.mp4" aria-label="Corn comparison: RGB input, ground truth, EgoPressureDiff, and our fine-tuned prediction" controls muted loop playsinline preload="metadata"></video></div></div></article>

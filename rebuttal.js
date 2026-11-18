@@ -31,7 +31,7 @@ const rebuttalGroups = [
 ];
 
 function makeRecording(group, label, folder) {
-  const path = `${group.root}/${folder}`;
+  const source = file => `${group.root}/${folder}/${file}`;
   const article = document.createElement('article');
   article.className = 'rebuttal-recording';
   const heading = document.createElement('h4');
@@ -47,7 +47,7 @@ function makeRecording(group, label, folder) {
     const caption = document.createElement('figcaption');
     caption.textContent = name;
     const video = document.createElement('video');
-    video.src = `${path}/${file}`;
+    video.src = source(file);
     video.muted = true;
     video.playsInline = true;
     video.preload = 'metadata';
@@ -70,7 +70,8 @@ function makeRecording(group, label, folder) {
   control.className = 'rebuttal-play';
   control.textContent = 'Play videos';
   control.setAttribute('aria-label', `Play ${label} videos`);
-  article.append(heading, scroller, control);
+  article.append(heading, scroller);
+  article.append(control);
 
   const master = videos[0];
   let playing = false;
@@ -113,3 +114,47 @@ for (const group of rebuttalGroups) {
   const container = document.getElementById(`${group.key}-videos`);
   container.replaceChildren(...group.recordings.map(([label, folder]) => makeRecording(group, label, folder)));
 }
+
+const regressionExamples = [
+  ['Sports · 073', '1_0012_sports_dicks_p1_demo_073'],
+  ['Office · 258', '2_0002_office_ml_p2_demo_258'],
+  ['Sports · 099', '3_0077_sports_dicks_p2_demo_099'],
+  ['Sports · 010', '4_0097_sports_dicks_p2_demo_010'],
+  ['Office · 200', '5_0008_office_ml_p2_demo_200']
+];
+const regressionRoot = 'assets/rebuttal/regression/regression_examples';
+const regressionContainer = document.getElementById('regression-videos');
+for (const [label, prefix] of regressionExamples) {
+  const figure = document.createElement('figure');
+  figure.className = 'regression-cell';
+  const caption = document.createElement('figcaption');
+  caption.textContent = label;
+  const video = document.createElement('video');
+  video.src = `${regressionRoot}/${prefix}_rgb.mp4`;
+  video.poster = `${regressionRoot}/${prefix}_rgb.poster.png`;
+  video.muted = true;
+  video.playsInline = true;
+  video.loop = true;
+  video.preload = 'metadata';
+  video.setAttribute('aria-label', `${label}: RGB input video`);
+  figure.append(caption, video);
+  regressionContainer.append(figure);
+}
+for (const [label, prefix] of regressionExamples) {
+  const figure = document.createElement('figure');
+  figure.className = 'regression-cell';
+  const img = document.createElement('img');
+  img.src = `${regressionRoot}/${prefix}_regression_tactile.poster.png`;
+  img.alt = `${label}: regression tactile output`;
+  img.loading = 'lazy';
+  figure.append(img);
+  regressionContainer.append(figure);
+}
+const regressionVideos = [...regressionContainer.querySelectorAll('video')];
+new IntersectionObserver(entries => {
+  const shouldPlay = entries[0].isIntersecting && !document.hidden && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  for (const video of regressionVideos) {
+    if (shouldPlay) video.play().catch(() => {});
+    else video.pause();
+  }
+}, {threshold: 0.15}).observe(document.getElementById('regression-comparison'));

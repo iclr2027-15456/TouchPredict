@@ -16,6 +16,11 @@
 .rebuttal-tile{margin:0;min-width:0}
 .rebuttal-tile figcaption{color:#505463;font-size:12px;font-weight:650;margin-bottom:8px;white-space:nowrap}
 .rebuttal-tile video{width:100%;aspect-ratio:1;object-fit:contain;background:#f0f1f5;border:1px solid #e7e8ed;border-radius:9px}
+.regression-scroll{overflow-x:auto;margin-top:22px}
+.regression-rows{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;min-width:650px}
+.regression-cell{margin:0;min-width:0}
+.regression-cell figcaption{color:#505463;font-size:11px;font-weight:650;margin-bottom:7px;white-space:nowrap}
+.regression-cell video,.regression-cell img{width:100%;aspect-ratio:1;object-fit:contain;background:#f0f1f5;border:1px solid #e7e8ed;border-radius:8px}
 .rebuttal-error{font-size:11px;color:#a23f4b;margin:5px 0 0}
 .epd-scroller{overflow-x:auto}
 .epd-media{min-width:740px}
